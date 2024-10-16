@@ -4,6 +4,8 @@ from hangman_art import *
 from hangman_words import word_list
 
 
+lives = 6
+
 word = random.choice(word_list)
 print(word)
 
@@ -30,6 +32,15 @@ while not game_over:
             display += "_"
     print(display)
 
+    if guess not in word:
+        lives -= 1
+
+    print(stages[lives])
+
     if "_" not in display:
         print("You win")
+        game_over = True
+
+    if lives == 0:
+        print("You lose")
         game_over = True
