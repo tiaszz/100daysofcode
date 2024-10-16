@@ -4,24 +4,32 @@ from hangman_art import *
 from hangman_words import word_list
 
 
-def get_word():
-    word = random.choice(word_list)
-    return word
+word = random.choice(word_list)
+print(word)
 
+placeholder = ""
 
-def get_user_guess():
+for position in range(len(word)):
+    placeholder += "_"
+print(placeholder)
+
+game_over = False
+correct_letter = []
+
+while not game_over:
     guess = input("Guess a letter: ").lower()
-    return guess
 
-
-def check_guess(guess, word):
+    display = ""
     for letter in word:
         if letter == guess:
-            print("Right")
+            display += letter
+            correct_letter.append(letter)
+        elif letter in correct_letter:
+            display += letter
         else:
-            print("Wrong")
+            display += "_"
+    print(display)
 
-
-word = get_word()
-guess = get_user_guess()
-check_guess(guess, word)
+    if "_" not in display:
+        print("You win")
+        game_over = True
