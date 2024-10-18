@@ -6,8 +6,9 @@ from hangman_words import word_list
 
 lives = 6
 
+print(logo)
+
 word = random.choice(word_list)
-print(word)
 
 placeholder = ""
 
@@ -17,9 +18,17 @@ print(placeholder)
 
 game_over = False
 correct_letter = []
+guessed_letter = []
 
 while not game_over:
     guess = input("Guess a letter: ").lower()
+
+    if guess in guessed_letter:
+        print(f"You've already guessed {guess}")
+        continue
+
+    if guess not in guessed_letter:
+        guessed_letter.append(guess)
 
     display = ""
     for letter in word:
@@ -33,6 +42,7 @@ while not game_over:
     print(display)
 
     if guess not in word:
+        print(f"The letter {guess} is not in the word")
         lives -= 1
 
     print(stages[lives])
