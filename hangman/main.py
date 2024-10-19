@@ -14,13 +14,14 @@ placeholder = ""
 
 for position in range(len(word)):
     placeholder += "_"
-print(placeholder)
+print(f"Word to guess: {placeholder}")
 
 game_over = False
 correct_letter = []
 guessed_letter = []
 
 while not game_over:
+    print(f"**********************{lives} lives left**********************")
     guess = input("Guess a letter: ").lower()
 
     if guess in guessed_letter:
