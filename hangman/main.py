@@ -46,12 +46,12 @@ while not game_over:
         print(f"The letter {guess} is not in the word")
         lives -= 1
 
+        if lives == 0:
+            game_over = True
+            print(f"****************IT WAS {word}! YOU LOSE****************")
+
     print(stages[lives])
 
     if "_" not in display:
-        print("You win")
         game_over = True
-
-    if lives == 0:
-        print("You lose")
-        game_over = True
+        print("****************YOU WIN****************")
